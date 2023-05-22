@@ -22,9 +22,8 @@ public class ExceptionMapper {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred. Kindly contact support");
     }
     @ExceptionHandler(DuplicateKeyException.class)
-    public ResponseEntity<String> handleDuplicateKeyException(Exception ex) {
-        // TODO
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    public ResponseEntity<String> handleDuplicateKeyException(DuplicateKeyException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Key Already exist.");
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
