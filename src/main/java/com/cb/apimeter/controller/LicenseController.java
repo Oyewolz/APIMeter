@@ -2,6 +2,9 @@ package com.cb.apimeter.controller;
 
 import com.cb.apimeter.model.APILicense;
 import com.cb.apimeter.service.LicenseService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +25,13 @@ import javax.validation.Valid;
 public class LicenseController {
 
     private final LicenseService licenseService;
+
+    @ApiOperation(value = "Create Consumer License")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Successfully created consumer License"),
+            @ApiResponse(code = 400, message = "Bad Request either email is not sent or duplicate email "),
+
+    })
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public APILicense licenseUser(@RequestBody @Valid APILicense apiLicense){
