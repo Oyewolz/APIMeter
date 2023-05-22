@@ -10,6 +10,5 @@ import java.time.LocalDateTime;
  */
 public interface APIUsageLogRepository extends MongoRepository<APIUsageLog, String> {
    Long countByConsumerIdAndTimestampBetween(String licenseKey, LocalDateTime startOfMonth, LocalDateTime endOfMonth);
-
    APIUsageLog getAPIUsageLogByConsumerId(String consumerId);
 }
